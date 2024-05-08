@@ -11,11 +11,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String _textNomeJogador = 'Jogador';
-  final _controller = TextEditingController();
+  final _controllerNomeJogador = TextEditingController();
 
-  void _changeText() {
+  void _atualizarText() {
     setState(() {
-      _textNomeJogador = (_controller.text == '') ? 'Jogador' : _controller.text;
+      _textNomeJogador = (_controllerNomeJogador.text == '') ? 'Jogador' : _controllerNomeJogador.text;
     });
   }
 
@@ -31,12 +31,12 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
              TextField(
-              controller: _controller,
+              controller: _controllerNomeJogador,
               decoration: const InputDecoration(
               border: OutlineInputBorder(),
               labelText: 'Nome do Jogador',
             ),
-            onChanged: (value) => _changeText(),
+            onChanged: (value) => _atualizarText(),
              ),
             Text(
               _textNomeJogador,
