@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jogo_da_velha/home.dart';
 
-void main() {
-  runApp(const JogoDaVelha());
-}
+void main() => runApp(const JogoDaVelha());
 
 class JogoDaVelha extends StatelessWidget {
   const JogoDaVelha({super.key});
@@ -11,7 +9,7 @@ class JogoDaVelha extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Jogo da Velha',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
