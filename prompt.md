@@ -4,7 +4,9 @@ Let's create a flutter app, it's a tic-tac-toe game. Below is my home file, wher
 
 ## Tasks
 
-A. I have a textfield. I need to enter a value there and change a text.
+A. I need a row below the text
+B. On the left i want a text "A"
+C. On the right I need the following elements: 2 radio buttons, one with text 3x3 and the other with the text 4x4
 
 ```dart
 import 'package:flutter/material.dart';
@@ -19,11 +21,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _counter = 0;
+  String _textNomeJogador = 'Jogador';
+  final _controllerNomeJogador = TextEditingController();
 
-  void _incrementCounter() {
+  void _atualizarText() {
     setState(() {
-      _counter++;
+      _textNomeJogador = (_controllerNomeJogador.text == '') ? 'Jogador' : _controllerNomeJogador.text;
     });
   }
 
@@ -38,25 +41,23 @@ class _HomeState extends State<Home> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-             const TextField(
-            decoration: InputDecoration(
+             TextField(
+              controller: _controllerNomeJogador,
+              decoration: const InputDecoration(
               border: OutlineInputBorder(),
               labelText: 'Nome do Jogador',
-            )
+            ),
+            onChanged: (value) => _atualizarText(),
              ),
             Text(
-              '$_counter',
+              _textNomeJogador,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
+
 ```
