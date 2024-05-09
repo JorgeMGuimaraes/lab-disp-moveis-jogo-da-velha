@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jogo_da_velha/celula.dart';
+import 'package:jogo_da_velha/partida.dart';
 
 class Tabuleiro4x4 extends StatefulWidget {
   const Tabuleiro4x4({super.key, required this.title});
@@ -7,22 +8,6 @@ class Tabuleiro4x4 extends StatefulWidget {
 
   @override
   State<Tabuleiro4x4> createState() => _Tabuleiro4x4State();
-}
-
-class Partida {
-  Jogador jogadorCorrente = Jogador.vazio;
-
-  void trocarJogador() {
-    if (jogadorCorrente == Jogador.vazio) {
-      jogadorCorrente = Jogador.x;
-    }
-    else if (jogadorCorrente == Jogador.x) {
-      jogadorCorrente = Jogador.o;
-    }
-    else {
-      jogadorCorrente = Jogador.x;
-    }
-  }
 }
 
 class _Tabuleiro4x4State extends State<Tabuleiro4x4> {
