@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jogo_da_velha/tabuleiro_3x3.dart';
+import 'package:jogo_da_velha/tabuleiro_4x4.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
@@ -35,6 +37,22 @@ class _HomeState extends State<Home> {
     });
   }
 
+  void _logicaNovoJogo() {
+    print('new game');
+    return;
+  }
+
+  Widget _carregarTabuleiro(){
+    if (_radioTamanhoTabuleiro == 0) {
+      return Tabuleiro3x3(title: 'title');
+    }
+    else if(_radioTamanhoTabuleiro == 1) {
+      return Tabuleiro4x4(title: 'title');
+    }
+
+    return Container();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +79,7 @@ class _HomeState extends State<Home> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                const Text('A'),
+                _carregarTabuleiro(),
                 Column(
                   children: <Widget>[
                     Row(
@@ -84,7 +102,7 @@ class _HomeState extends State<Home> {
                         const Text('4x4'),
                       ],
                     ),
-                                        Row(
+                    Row(
                       children: <Widget>[
                         Radio(
                           value: 0,
@@ -104,7 +122,10 @@ class _HomeState extends State<Home> {
                         const Text('Jogador O'),
                       ],
                     ),
-
+                    TextButton(
+                      onPressed: _logicaNovoJogo,
+                      child: const Text('Começar Jogo'),
+                    )
                   ],
                 ),
               ],
