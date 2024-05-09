@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jogo_da_velha/constants.dart';
-import 'package:jogo_da_velha/tabuleiro_4x4.dart';
+import 'package:jogo_da_velha/jogador.dart';
+import 'package:jogo_da_velha/partida.dart';
 
 class Celula extends StatefulWidget {
   const Celula({super.key, required this.partida});
@@ -15,12 +16,6 @@ class DadosCelula {
   String imagem = Constants.imgVazio;
   bool habilitado = true;
   Jogador jogador = Jogador.vazio;
-}
-
-enum Jogador {
-  x,
-  o,
-  vazio,
 }
 
 class _CelulaState extends State<Celula> {
