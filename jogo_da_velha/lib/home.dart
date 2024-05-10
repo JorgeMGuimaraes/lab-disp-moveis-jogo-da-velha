@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jogo_da_velha/partida.dart';
 import 'package:jogo_da_velha/tabuleiro_3x3.dart';
 import 'package:jogo_da_velha/tabuleiro_4x4.dart';
 
@@ -12,19 +13,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Partida partida = Partida();
   bool _alteracoes = true;
-  String _textNomeJogador = 'Jogador';
   final _controllerNomeJogador = TextEditingController();
   int? _radioTamanhoTabuleiro = 0;
   int? _radioTipoJogador = 0;
   Widget _tabuleiro = Container();
+  String jogadorExibicao = '';
 
-  void _atualizarText() {
+  void _atualizarNomeJogador() {
     if (!_alteracoes) {
       return;
     }
     setState(() {
-      _textNomeJogador = (_controllerNomeJogador.text == '')
+      partida.nomeJogador = (_controllerNomeJogador.text == '')
           ? 'Jogador'
           : _controllerNomeJogador.text;
     });
@@ -62,8 +64,8 @@ class _HomeState extends State<Home> {
     }
     setState(() {
       _tabuleiro = (_radioTamanhoTabuleiro == 0)
-          ? const Tabuleiro3x3()
-          : const Tabuleiro4x4();
+          ? Tabuleiro3x3(partida: partida,)
+          : Tabuleiro4x4(partida: partida,);
     });
   }
 
@@ -97,11 +99,11 @@ class _HomeState extends State<Home> {
                 border: OutlineInputBorder(),
                 labelText: 'Nome do Jogador',
               ),
-              onChanged: (value) => _atualizarText(),
+              onChanged: (value) => _atualizarNomeJogador(),
               readOnly: !_alteracoes,
             ),
             Text(
-              _textNomeJogador,
+              partida.nomeCorrente,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             Row(

@@ -32,6 +32,10 @@ class _CelulaState extends State<Celula> {
       _dados.habilitado = false;
       _dados.jogador = widget.partida.jogadorCorrente;
       widget.partida.trocarJogador();
+      widget.partida.nomeCorrente =
+          (widget.partida.jogadorCorrente == widget.partida.escolhaJogador)
+              ? widget.partida.nomeJogador
+              : 'CPU';
     });
     return;
   }

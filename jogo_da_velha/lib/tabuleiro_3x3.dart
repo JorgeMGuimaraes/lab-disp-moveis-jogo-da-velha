@@ -3,7 +3,8 @@ import 'package:jogo_da_velha/celula.dart';
 import 'package:jogo_da_velha/partida.dart';
 
 class Tabuleiro3x3 extends StatefulWidget {
-  const Tabuleiro3x3({super.key});
+  const Tabuleiro3x3({super.key, required this.partida});
+  final Partida partida;
 
   @override
   State<Tabuleiro3x3> createState() => _Tabuleiro3x3State();
